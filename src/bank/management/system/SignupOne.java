@@ -152,7 +152,7 @@ public class SignupOne extends JFrame implements ActionListener{
         
         JLabel pincode = new JLabel("ZIP Code:*");
         pincode.setFont(new Font("Raleway",Font.BOLD,20));
-        pincode.setBounds(100, 590, 100, 30);
+        pincode.setBounds(100, 590, 150, 30);
         add(pincode);
         
         zipTextField = new JTextField();

@@ -14,6 +14,7 @@ public class Deposit extends JFrame implements ActionListener{
     String pinnumber;
     
     Deposit(String pinnumber){
+        this.pinnumber = pinnumber;
         
         setLayout(null);
         
@@ -55,7 +56,7 @@ public class Deposit extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent ae){
         if (ae.getSource()== deposit){
             String number = amount.getText();
-            Date date = new Date();
+            Date date = new Date();           
             if (number.equals("")){
                 JOptionPane.showMessageDialog(null, "Please Enter the Amount you want to deposit");
             }else{
@@ -65,6 +66,7 @@ public class Deposit extends JFrame implements ActionListener{
                 conn.s.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "$"+number+" Deposited Successfully");
                 setVisible(false);
+                System.out.println(this.pinnumber);
                 new Transactions(pinnumber).setVisible(true);
                 } catch (Exception e){
                     System.out.println(e);
