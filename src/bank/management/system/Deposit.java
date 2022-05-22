@@ -50,6 +50,7 @@ public class Deposit extends JFrame implements ActionListener{
         
         setSize(700,680);
         setLocation(300,10);
+        setUndecorated(true);
         setVisible(true);
     }
     
@@ -62,11 +63,10 @@ public class Deposit extends JFrame implements ActionListener{
             }else{
                 try{
                 Conn conn = new Conn();
-                String query = "insert into bank values ('"+pinnumber+"','"+date+"','deposit','"+number+"')";
+                String query = "insert into bank values ('"+pinnumber+"','"+date+"','DEPOSIT','"+number+"')";
                 conn.s.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "$"+number+" Deposited Successfully");
-                setVisible(false);
-                System.out.println(this.pinnumber);
+                setVisible(false);                
                 new Transactions(pinnumber).setVisible(true);
                 } catch (Exception e){
                     System.out.println(e);

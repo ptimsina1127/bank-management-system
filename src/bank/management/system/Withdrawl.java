@@ -51,6 +51,7 @@ public class Withdrawl extends JFrame implements ActionListener{
         
         setSize(700,680);
         setLocation(300,10);
+        setUndecorated(true);
         setVisible(true);
     }
     
@@ -63,7 +64,7 @@ public class Withdrawl extends JFrame implements ActionListener{
             }else{
                 try{
                 Conn conn = new Conn();
-                String query = "insert into bank values ('"+pinnumber+"','"+date+"','withdrawl','"+number+"')";
+                String query = "insert into bank values ('"+pinnumber+"','"+date+"','WITHDRAWL','"+number+"')";
                 conn.s.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "$"+number+" Withdraw Successful");
                 setVisible(false);

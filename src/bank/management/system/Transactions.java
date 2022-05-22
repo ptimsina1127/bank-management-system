@@ -54,6 +54,7 @@ public class Transactions extends JFrame implements ActionListener{
         balanceenquiry = new JButton("Balance Enquiry") ;
         balanceenquiry.setFont(new Font("system",Font.BOLD,11));
         balanceenquiry.setBounds(275,405,125,25);
+        balanceenquiry.addActionListener(this);
         image.add(balanceenquiry);
         
         exit = new JButton("Exit") ;
@@ -77,6 +78,18 @@ public class Transactions extends JFrame implements ActionListener{
         } else if (ae.getSource()== withdrawl){
             setVisible(false);
             new Withdrawl(pinnumber).setVisible(true);
+        } else if (ae.getSource()==fastcash){
+            setVisible(false);
+            new FastCash(pinnumber).setVisible(true);
+        } else if (ae.getSource()==pinchange){
+            setVisible(false);
+            new PinChange(pinnumber).setVisible(true);
+        }else if (ae.getSource()== balanceenquiry){
+            setVisible(false);
+            new BalanceEnquiry(pinnumber).setVisible(true);
+        } else if (ae.getSource()==ministatement){
+            //setVisible(false);
+            new MiniStatement(pinnumber).setVisible(true);
         }
     }
     
