@@ -26,16 +26,27 @@ public class MiniStatement extends JFrame {
         card.setBounds(20,80,300,20);
         add(card);
         
-        try{
+        JLabel balance = new JLabel ();
+        balance.setBounds(20, 400, 300, 20);
+        add(balance);
+       
+        try {
             Conn conn = new Conn();
-            ResultSet rs = conn.s.executeQuery("select * from login where pin = '"+pinnumber+"'");
-            while (rs.next()){
-                card.setText("Card Number: "+rs.getString("cardnumber").substring(0,4)+"-XXXX-XXXX-"+ rs.getString("cardnumber").substring(12));
+            int bal = 0;
+            ResultSet rs = conn.s.executeQuery("select * from login where pin = '" + pinnumber + "'");
+            while (rs.next()) {
+                card.setText("Card Number: " + rs.getString("cardnumber").substring(0, 4) + "-XXXX-XXXX-" + rs.getString("cardnumber").substring(12));
+                if (rs.getString("type").equals("deposit")) {
+                    bal += Integer.parseInt(rs.getString("amount"));
+                } else {
+                    bal -= Integer.parseInt(rs.getString("amount"));
+                }
             }
-        } catch(Exception e){
+            balance.setText("Your Current account balance is USD "+ bal);
+        } catch (Exception e) {
             System.out.println(e);
         }
-        
+
         try {
             Conn conn = new Conn();
             ResultSet rs = conn.s.executeQuery("select * from bank where pin = '1111'");//"+pinnumber+"
