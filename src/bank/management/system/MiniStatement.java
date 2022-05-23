@@ -32,7 +32,9 @@ public class MiniStatement extends JFrame {
         try {
             Conn conn = new Conn();
             int bal = 0;
-            ResultSet rs = conn.s.executeQuery("select * from login where pin = '" + pinnumber + "'");
+            //ResultSet rs = conn.s.executeQuery("select * from login where pin = '" + pinnumber + "'");
+            ResultSet rs = conn.s.executeQuery("select * from bank join login on login.pin = bank.pin where bank.pin = '" + pinnumber + "'");
+
             while (rs.next()) {
                 card.setText("Card Number: " + rs.getString("cardnumber").substring(0, 4) + "-XXXX-XXXX-" + rs.getString("cardnumber").substring(12));
                 if (rs.getString("type").equals("DEPOSIT")) {
