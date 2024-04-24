@@ -2,9 +2,11 @@
 package bank.management.system;
 
 import javax.swing.*;
+
+import com.toedter.calendar.JDateChooser;
+
 import java.awt.*;
 import java.util.*;
-import com.toedter.calendar.JDateChooser;
 import java.awt.event.*;
 
 public class SignupOne extends JFrame implements ActionListener{
